@@ -14,18 +14,18 @@ ini_set('display_errors', 1);
 session_start();
 if($_POST){
     setcookie("age", $_POST['age'], time() + 172800);
-            if (key_exists("age", $_COOKIE) && key_exists("prenom", $_SESSION) && key_exists("nom", $_SESSION)){
-                echo "Bienvenue {$_SESSION['prenom']} {$_SESSION['nom']} ! <br>";
-                ?>
-                <button type="submit" method = "get" name="deconnexion">Se déconnecter</button><br>
-                <?php
-            }
-            else if(key_exists("age", $_COOKIE)){
-                echo "Vous avez {$_POST['age']} ans";
-            }     
-            else {echo "Veuillez vous connecter avec le formulaire svp !";}
+    echo "Bienvenue {$_SESSION['prenom']} {$_SESSION['nom']} ! <br>";
+    ?>
+    <form action="disconnect.php">
+        <button type="submit">Se déconnecter</button>
+    </form>
+    <?php
+        if(key_exists("age", $_COOKIE)){
+            echo "Vous avez {$_POST['age']} ans";
+        }     
+        else {echo "Veuillez vous connecter avec le formulaire svp !";
         }
-else if (key_exists("deconnexion", $_GET)){'disconnect.php';}  
+}
 else { 
 ?>
 <p>Veuillez vous connecter</p>

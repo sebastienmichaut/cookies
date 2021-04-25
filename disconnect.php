@@ -1,4 +1,4 @@
 <?php
 session_destroy();
-header ("location : session.php");
+function header('Location: session.php');
 ?>
